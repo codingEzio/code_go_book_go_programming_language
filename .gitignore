@@ -1,0 +1,26 @@
+# Copied from
+#   https://github.com/astaxie/build-web-application-with-golang/blob/master/.gitignore
+#   https://github.com/github/gitignore/blob/master/Go.gitignore
+
+# My own
+._*
+
+# Test binary, built with `go test -c`
+*.test
+
+# Binaries for programs and plugins
+*.out
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*~
+pkg/*
+*.html
+*.epub
+*.pdf
+.DS_Store
+.vscode
+.git
+.idea/
