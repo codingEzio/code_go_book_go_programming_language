@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
@@ -54,13 +53,18 @@ func topoSort(mp map[string][]string) []string {
 		}
 	}
 
-	var keys []string
-	for key := range mp {
-		keys = append(keys, key)
-	}
+	// var keys []string
+	// for key := range mp {
+	// 	keys = append(keys, key)
+	// }
+	//
+	// sort.Strings(keys)
+	// visitAll(keys)
 
-	sort.Strings(keys)
-	visitAll(keys)
+	// Another way to do it (maps, instead of slice+initialsort)
+	for key := range mp {
+		visitAll([]string{key})
+	}
 
 	return order
 }
