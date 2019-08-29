@@ -1,3 +1,4 @@
+// Sorts courses topologically based on hard-coded dependencies.
 package main
 
 import (
