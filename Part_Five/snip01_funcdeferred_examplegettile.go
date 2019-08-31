@@ -29,15 +29,16 @@ func title(url string) error {
 	if err != nil {
 		return err
 	}
+	// Statements/functions being deferred will only being executed
+	// when the function has finished, whether normally(ret) or abnormally(panic) 😌
+	defer resp.Body.Close()
 
 	contentType := resp.Header.Get("Content-Type")
 	if contentType != "text/html" && !strings.HasPrefix(contentType, "text/html;") {
-		resp.Body.Close()
-		return fmt.Errorf("%s has type $s, not text/html", url, contentType)
+		return fmt.Errorf("%s has type [%s], not text/html", url, contentType)
 	}
 
 	htmlBody, err := html.Parse(resp.Body)
-	resp.Body.Close()
 	if err != nil {
 		return fmt.Errorf("parsing %s as HTML: %v", url, err)
 	}
