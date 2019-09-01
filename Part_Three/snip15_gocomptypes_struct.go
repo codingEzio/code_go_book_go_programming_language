@@ -5,6 +5,12 @@ import (
 )
 
 func main() {
+	/*
+		A little bit more about 'scope'
+		- Struct being define outside of this func are exportable/or-not (Cap/NotCap)
+		- Struct being defined inside this func can only be accessed in this func (hm)
+	*/
+
 	// defAndModifyByRefAndAddr()
 	// structLiteral()
 	// structAsArguments()
