@@ -2,6 +2,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -9,10 +10,15 @@ import (
 	"time"
 )
 
-func main() {
-	fmt.Println("Now you can test this by running `nc localhost 8080`")
+var port = flag.Int("port", 8080, "listen port")
 
-	listener, err := net.Listen("tcp", "localhost:8080")
+func main() {
+	flag.Parse()
+	fmt.Printf("Now you can test this by running `nc localhost %d`\n", *port)
+
+	// listener, err := net.Listen("tcp", "localhost:8080")
+	listener, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
+
 	if err != nil {
 		log.Fatal(err)
 	}
