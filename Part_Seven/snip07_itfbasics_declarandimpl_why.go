@@ -17,13 +17,18 @@ type Contract struct {
 	empId    int
 	basicpay int
 }
+type Temporary struct {
+	empId    int
+	basicpay int
+}
 
 func main() {
 	pemp1 := Permanent{1, 3000, 20}
 	pemp2 := Permanent{2, 4000, 30}
 	cemp1 := Contract{3, 3000}
+	temp1 := &Temporary{4, 1000}
 
-	employees := []SalaryCalculator{pemp1, pemp2, cemp1}
+	employees := []SalaryCalculator{pemp1, pemp2, cemp1, temp1}
 	totalExpenses(employees)
 }
 
@@ -33,6 +38,9 @@ func (perma Permanent) CalculateSalary() int {
 
 func (contr Contract) CalculateSalary() int {
 	return contr.basicpay
+}
+func (tempo *Temporary) CalculateSalary() int {
+	return tempo.basicpay
 }
 
 // CalculateSalary() int
